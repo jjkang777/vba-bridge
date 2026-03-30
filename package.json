@@ -1,0 +1,16 @@
+{
+  "name": "vba-ext-workspace",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:lsp && npm run build:ext",
+    "build:ext": "cd extension && npm run build",
+    "build:lsp": "cd lsp && npm run build",
+    "watch": "concurrently \"npm run watch:lsp\" \"npm run watch:ext\"",
+    "watch:ext": "cd extension && npm run watch",
+    "watch:lsp": "cd lsp && npm run watch",
+    "check": "node lsp/out/cli.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

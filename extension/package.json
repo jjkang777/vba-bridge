@@ -1,0 +1,93 @@
+{
+  "name": "vba",
+  "displayName": "VBA",
+  "description": "VBA language support for VS Code with IntelliSense, diagnostics, and Excel integration",
+  "version": "0.1.0",
+  "publisher": "vba-ext",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:vba"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "vba",
+        "aliases": [
+          "VBA",
+          "Visual Basic for Applications"
+        ],
+        "extensions": [
+          ".bas",
+          ".cls",
+          ".frm"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "vba",
+        "scopeName": "source.vba",
+        "path": "../grammars/vba.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "vba.pull",
+        "title": "VBA: Pull from Excel"
+      },
+      {
+        "command": "vba.push",
+        "title": "VBA: Push to Excel"
+      },
+      {
+        "command": "vba.list",
+        "title": "VBA: List Workbooks"
+      }
+    ],
+    "configuration": {
+      "title": "VBA",
+      "properties": {
+        "vba.bridge.path": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the VBA bridge executable. Leave empty to use bundled bridge."
+        },
+        "vba.formatting.indentSize": {
+          "type": "number",
+          "default": 4,
+          "description": "Number of spaces per indent level"
+        },
+        "vba.formatting.keywordCase": {
+          "type": "string",
+          "enum": [
+            "PascalCase",
+            "lowercase",
+            "UPPERCASE",
+            "preserve"
+          ],
+          "default": "PascalCase",
+          "description": "Keyword casing style"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+out/
+*.js.map
+extension/out/
+lsp/out/
+bridge/bin/
+bridge/obj/
+.vscode-test/
+*.vsix
